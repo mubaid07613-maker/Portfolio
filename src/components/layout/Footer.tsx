@@ -39,7 +39,7 @@ export default function Footer() {
             <span>•</span>
             <span>Tailwind CSS</span>
             <span>•</span>
-            <span className="text-emerald-400">AWS Amplify Ready</span>
+            <span className="text-emerald-400">Vercel & Edge Ready</span>
           </div>
 
           {/* Socials & Scroll to Top */}

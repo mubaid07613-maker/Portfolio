@@ -224,13 +224,13 @@ export const portfolioData = {
       tags: ["PyTorch", "Tensors", "Neural Networks", "Deep Learning"]
     },
     {
-      id: "learning-cloud-amplify",
-      topic: "Modern Cloud Architecture & AWS Amplify",
+      id: "learning-cloud-vercel",
+      topic: "Modern Cloud Architecture & Edge Deployment",
       domain: "Cloud Engineering",
-      focus: "Mastering static edge deployment, serverless hosting, CDN cache invalidation, and CI/CD pipelines via AWS Amplify.",
-      progressPercent: 80,
-      nextMilestone: "Deploy portfolio with custom domain routing and automated AWS build hooks.",
-      tags: ["AWS Amplify", "CloudFront CDN", "Next.js Static Export", "CI/CD"]
+      focus: "Mastering static edge deployment, global CDN routing, serverless architecture, and CI/CD automation via Vercel.",
+      progressPercent: 85,
+      nextMilestone: "Deploy portfolio on Vercel with custom domain routing and automated Git push triggers.",
+      tags: ["Vercel", "Edge CDN", "Next.js", "CI/CD"]
     },
     {
       id: "learning-embedded-systems",

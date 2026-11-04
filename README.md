@@ -2,7 +2,7 @@
 
 A dark technical developer portfolio and interactive engineering dashboard for **Ubaid Ur Rehman**, Computer Engineering student at Bahauddin Zakariya University (BZU), Multan.
 
-Built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, and **Lucide Icons**, configured for static export (`output: 'export'`) and deployment on **AWS Amplify**.
+Built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, and **Lucide Icons**, optimized for instant, zero-config deployment on **Vercel** (or Netlify / Cloudflare Pages).
 
 ---
 
@@ -29,6 +29,46 @@ Built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, and **
   - Tab 4: **Certificates Shelf** — Active credentials and upcoming certifications with verification links.
 - **Academic Leadership:**
   - Official Class Representative & Departmental Laboratory Support Liaison at BZU.
+
+---
+
+## 🚀 How to Deploy on Vercel in 60 Seconds (Recommended)
+
+Vercel is created by the team behind Next.js. It requires **zero configuration**, has no IAM permissions or complex AWS settings, and automatically deploys every time you push to GitHub.
+
+### Step 1: Push your code to GitHub
+If you haven't pushed yet, run:
+```bash
+git add .
+git commit -m "feat: complete interactive developer portfolio"
+git branch -M main
+git remote add origin https://github.com/YOUR_GITHUB_USERNAME/portfolio.git
+git push -u origin main
+```
+
+### Step 2: Deploy on Vercel
+1. Go to [vercel.com](https://vercel.com) and click **Sign Up** (or log in with your GitHub account).
+2. Click **Add New...** > **Project**.
+3. You will see your `portfolio` repository listed under "Import Git Repository". Click **Import**.
+4. Leave all default settings as-is (Vercel automatically detects Next.js).
+5. Click **Deploy**.
+
+That's it! In ~40 seconds, your portfolio is live worldwide on Vercel's Edge Network with a free `https://your-name.vercel.app` domain and free automatic HTTPS/SSL certificates.
+
+---
+
+## 🌐 Other Free Deployment Options
+
+### Option B: Netlify
+1. Go to [netlify.com](https://www.netlify.com).
+2. Click **Add new site** > **Import an existing project** > **GitHub**.
+3. Select your repository. Netlify detects Next.js automatically.
+4. Click **Deploy site**.
+
+### Option C: Cloudflare Pages
+1. Go to [dash.cloudflare.com](https://dash.cloudflare.com) > **Workers & Pages**.
+2. Click **Create Application** > **Pages** > **Connect to Git**.
+3. Select `portfolio`, choose the **Next.js (Static Export)** preset, and click **Save and Deploy**.
 
 ---
 
@@ -59,10 +99,10 @@ Modify your active focus in `src/data/portfolioData.ts`:
   id: "learning-dl-pytorch",
   topic: "Deep Learning & Neural Networks (PyTorch)",
   domain: "Artificial Intelligence",
-  focus: "Transitioning into deep neural architectures and tensor computation...",
+  focus: "Transitioning into deep neural architectures, backpropagation, and tensors...",
   progressPercent: 65,
   nextMilestone: "Build a convolutional image and acoustic signal classifier in PyTorch.",
-  tags: ["PyTorch", "Neural Networks", "Deep Learning"]
+  tags: ["PyTorch", "Tensors", "Neural Networks"]
 }
 ```
 
@@ -90,32 +130,6 @@ Add upcoming credentials to `certificates` in `src/data/portfolioData.ts`:
   skills: ["Supervised ML", "Decision Trees", "scikit-learn"]
 }
 ```
-
----
-
-## ☁️ How to Deploy on AWS Amplify
-
-Your project already includes the required `amplify.yml` build configuration and Next.js static export (`output: 'export'`).
-
-### Step 1: Push your code to GitHub
-```bash
-git add .
-git commit -m "feat: complete interactive engineering portfolio"
-git branch -M main
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/portfolio.git
-git push -u origin main
-```
-
-### Step 2: Deploy in AWS Amplify Console
-1. Open the [AWS Amplify Console](https://console.aws.amazon.com/amplify).
-2. Click **Create new app** > Select **GitHub** as the source.
-3. Choose your `portfolio` repository and `main` branch.
-4. AWS Amplify will automatically detect the pre-configured `amplify.yml` file:
-   - Build command: `npm run build`
-   - Output directory: `out`
-5. Click **Save and deploy**.
-
-Your portfolio will be live worldwide on AWS CloudFront's global CDN with automatic free SSL/HTTPS in under 2 minutes.
 
 ---
 

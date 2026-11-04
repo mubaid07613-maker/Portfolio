@@ -26,8 +26,8 @@ body {
 
 /* Custom Sleek Dark Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -40,28 +40,28 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #38BDF8;
 }
 
-/* Glass Surface Utility */
+/* Sharp Frosted Glass Surface Utility */
 .glass-surface {
-  background: rgba(14, 17, 24, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(13, 16, 23, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-surface-hover:hover {
-  background: rgba(22, 27, 38, 0.85);
-  border-color: rgba(56, 189, 248, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(56, 189, 248, 0.1);
+  background: rgba(18, 22, 32, 0.88);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 12px 36px -12px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(56, 189, 248, 0.12);
 }
 
 /* Engineering Dot Grid Background */
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 /* Subtle Animated Gradient Glow */
@@ -77,3 +77,15 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.gradient-text-amber {
+  background: linear-gradient(135deg, #FFFFFF 30%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Codeblock Styling */
+pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}

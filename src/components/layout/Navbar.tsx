@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { portfolioData } from '@/data/portfolioData';
-import { Menu, X, FileDown, Terminal, ExternalLink } from 'lucide-react';
+import { Menu, X, FileDown, Terminal } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,12 +18,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Overview', href: '#overview' },
-    { name: 'Dashboard', href: '#dashboard' },
-    { name: 'Skills Matrix', href: '#skills' },
+    { name: 'Engineering Lab', href: '#workbench' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Education', href: '#education' },
+    { name: 'Mastery Hub', href: '#knowledge-hub' },
     { name: 'Leadership', href: '#leadership' },
-    { name: 'Certifications', href: '#certifications' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -37,7 +35,8 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo / Monogram */}
+          
+          {/* Brand Monogram */}
           <a
             href="#overview"
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded-lg p-1"
@@ -128,4 +127,3 @@ export default function Navbar() {
     </header>
   );
 }
-

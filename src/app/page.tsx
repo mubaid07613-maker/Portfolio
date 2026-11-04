@@ -1,44 +1,31 @@
 import React from 'react';
 import HeroSection from '@/components/sections/HeroSection';
-import TelemetryDashboard from '@/components/sections/TelemetryDashboard';
-import SkillsSection from '@/components/sections/SkillsSection';
+import EngineeringWorkbench from '@/components/interactive/EngineeringWorkbench';
 import ProjectsSection from '@/components/sections/ProjectsSection';
-import EducationSection from '@/components/sections/EducationSection';
+import LearningHub from '@/components/sections/LearningHub';
 import LeadershipSection from '@/components/sections/LeadershipSection';
-import CertificatesSection from '@/components/sections/CertificatesSection';
-import CurrentlyLearningSection from '@/components/sections/CurrentlyLearningSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Hero Introduction */}
+      {/* 1. Hero Cockpit & Interactive Terminal Dock */}
       <HeroSection />
 
-      {/* 2. Live Telemetry Dashboard & Metrics */}
-      <TelemetryDashboard />
+      {/* 2. Interactive Engineering Workbench (DSP Oscilloscope, C Pointer Allocator, ML Tree) */}
+      <EngineeringWorkbench />
 
-      {/* 3. Skills Matrix (C, Python/ML, C#, MATLAB/DSP) */}
-      <SkillsSection />
-
-      {/* 4. Featured Projects (C Student System, ML Diabetes, C# Auth, MATLAB DSP) */}
+      {/* 3. Featured Projects Bento Grid (Live Code View, Architecture, GitHub Links) */}
       <ProjectsSection />
 
-      {/* 5. Education & Coursework (BZU Multan, CGPA 3.99/4.00) */}
-      <EducationSection />
+      {/* 4. Unified Mastery Hub (Currently Learned, Active Roadmap, Coursework, Certificates) */}
+      <LearningHub />
 
-      {/* 6. Experience & Leadership (Class Representative & Lab Support) */}
+      {/* 5. Departmental Leadership & Laboratory Support */}
       <LeadershipSection />
 
-      {/* 7. Certificates & Professional Credentials */}
-      <CertificatesSection />
-
-      {/* 8. Currently Learning & Ambition */}
-      <CurrentlyLearningSection />
-
-      {/* 9. Contact & Recruiter Dossier */}
+      {/* 6. Direct Contact & Dispatcher */}
       <ContactSection />
     </div>
   );
 }
-

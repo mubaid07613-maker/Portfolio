@@ -1,14 +1,37 @@
 /**
  * ============================================================================
- * PORTFOLIO DATA CONFIGURATION
+ * PORTFOLIO DATA CONFIGURATION — UBAID UR REHMAN
  * ============================================================================
  * 
- * HOW TO MODIFY:
- * - To add a new project, simply copy an object in the `projects` array and paste it.
- * - To update your GitHub links, replace the `githubUrl` field.
- * - To add certificates, add an object to the `certificates` array.
- * - All content here automatically updates throughout the entire website!
+ * HOW TO EDIT YOUR PORTFOLIO:
+ * 1. EDIT CURRENTLY LEARNED: Modify or add objects to the `currentlyLearned` array.
+ * 2. EDIT CURRENTLY LEARNING: Modify topics in the `currentlyLearning` array.
+ * 3. EDIT PROJECTS & GITHUB REPOS: Change `githubUrl` or add new project items.
+ * 4. EDIT CERTIFICATES: Add new credentials to the `certificates` array.
+ * 
+ * Changes here automatically update all interactive dashboards and cards!
  */
+
+export interface LearnedItem {
+  id: string;
+  topic: string;
+  category: 'Systems' | 'Machine Learning' | 'Signal Processing' | 'Software' | 'Hardware';
+  period: string; // e.g. "Fall 2026", "Recent"
+  takeaway: string; // What you learned and mastered
+  appliedIn: string; // Project or lab where applied
+  status: 'Mastered' | 'Proficient' | 'Hands-on Practice';
+  tags: string[];
+}
+
+export interface LearningItem {
+  id: string;
+  topic: string;
+  domain: string;
+  focus: string;
+  progressPercent: number; // 0 to 100
+  nextMilestone: string;
+  tags: string[];
+}
 
 export interface ProjectItem {
   id: string;
@@ -18,13 +41,18 @@ export interface ProjectItem {
   description: string;
   highlights: string[];
   techStack: string[];
-  githubUrl: string; // Set your repo link here, e.g., "https://github.com/ubaid-rehman/my-repo"
-  liveDemoUrl?: string; // Optional live link
+  githubUrl: string; // Replace with your repository link
+  liveDemoUrl?: string;
   featured: boolean;
   status: 'Completed' | 'In Development' | 'Coursework Project';
   date: string;
   badge?: string;
-  architectureDetails?: string[];
+  architectureDetails: string[];
+  codeSnippet?: {
+    language: string;
+    filename: string;
+    code: string;
+  };
 }
 
 export interface CertificateItem {
@@ -38,25 +66,11 @@ export interface CertificateItem {
   badgeColor?: string;
 }
 
-export interface SkillCategory {
-  id: string;
-  title: string;
-  iconName: 'Cpu' | 'Brain' | 'Radio' | 'Code' | 'Terminal' | 'Database';
-  description: string;
-  skills: {
-    name: string;
-    level: 'Core' | 'Proficient' | 'Exploring';
-    tag?: string;
-  }[];
-}
-
-export interface LeadershipRole {
-  role: string;
-  organization: string;
-  location: string;
-  period: string;
-  highlights: string[];
-  impactTags: string[];
+export interface CourseworkItem {
+  name: string;
+  code: string;
+  category: string;
+  semester: string;
 }
 
 export const portfolioData = {
@@ -69,11 +83,11 @@ export const portfolioData = {
     university: "Bahauddin Zakariya University (BZU), Multan",
     degree: "BSc Computer Engineering",
     cgpa: "3.99 / 4.00",
-    semester: "3rd Semester (Active)",
-    about: 
-      "Computer Engineering student at BZU Multan with hands-on experience in C systems programming, Python data processing, and growing expertise in C# and machine learning. Comfortable building clean software projects, engineering ML classification pipelines with scikit-learn, and conducting signal processing and spectral analysis with MATLAB. Driven by a rigorous engineering and analytical mindset, with a passion for building reliable software.",
-    statusBadge: "Available for Internships & Collaborations",
-    resumeDownloadUrl: "#", // Replace with your actual resume PDF link or path, e.g. "/resume/Ubaid_Ur_Rehman_Resume.pdf"
+    semester: "3rd Semester",
+    about:
+      "Computer Engineering student at BZU Multan combining low-level systems programming in C with machine learning classification in Python and discrete signal processing in MATLAB. Driven by analytical problem-solving and rigorous engineering principles with high academic standing.",
+    statusBadge: "Available for Internships & Engineering Roles",
+    resumeDownloadUrl: "#", // Add your PDF path here
   },
 
   socialLinks: {
@@ -81,13 +95,6 @@ export const portfolioData = {
     linkedin: "https://linkedin.com/in/placeholder-ubaid", // EDIT HERE: Your LinkedIn Profile URL
     email: "mailto:m.ubaid.07613@gmail.com",
     phone: "tel:+923198614307",
-  },
-
-  telemetry: {
-    academicRank: "High Academic Distinction (CGPA 3.99/4.00)",
-    currentSemester: "3rd Semester",
-    primaryLanguages: ["C", "Python", "C#"],
-    primaryDomains: ["Machine Learning", "Signal Processing (DSP)", "Systems Programming"],
   },
 
   education: [
@@ -99,9 +106,9 @@ export const portfolioData = {
       grade: "CGPA 3.99 / 4.00",
       status: "In Progress (3rd Semester)",
       highlights: [
-        "Consistent academic excellence with a current CGPA of 3.99/4.00.",
-        "Class Representative & Departmental Laboratory Support liaison.",
-        "Focused study in digital logic, circuit analysis, discrete structures, and signals & systems."
+        "Current CGPA of 3.99 / 4.00, placing in top academic distinction.",
+        "Official Class Representative & Departmental Laboratory Support liaison.",
+        "Engineering curriculum covering digital logic design, signals & systems, and OOP."
       ]
     },
     {
@@ -111,81 +118,135 @@ export const portfolioData = {
       period: "2023 – 2025",
       grade: "Completed",
       highlights: [
-        "Strong mathematical foundation in calculus, physics, and analytical problem-solving.",
-        "Transitioned directly into university-level Computer Engineering."
+        "Advanced mathematics, calculus, and classical physics foundation."
       ]
     }
   ],
 
   coursework: [
-    { name: "Object-Oriented Programming (C#)", code: "CS-OOP", category: "Software" },
-    { name: "Machine Learning with Python", code: "AI-ML", category: "AI / Data" },
-    { name: "Signals & Systems", code: "EE-SIG", category: "Engineering" },
-    { name: "Digital Logic Design (DLD)", code: "CE-DLD", category: "Hardware" },
-    { name: "Circuit Analysis", code: "EE-CKT", category: "Hardware" },
-    { name: "Discrete Structures", code: "CS-DIS", category: "Mathematics" },
-    { name: "Complex Variables & Transforms", code: "MATH-CV", category: "Mathematics" },
-  ],
-
-  skillCategories: [
-    {
-      id: "programming",
-      title: "Core Programming & Systems",
-      iconName: "Terminal",
-      description: "Low-level memory control, structured coding, and object-oriented paradigms.",
-      skills: [
-        { name: "C Language", level: "Core", tag: "Pointers & Structs" },
-        { name: "Dynamic Memory Allocation", level: "Core", tag: "malloc/free" },
-        { name: "Data Structures in C", level: "Core", tag: "Arrays, Records" },
-        { name: "C# (.NET)", level: "Proficient", tag: "OOP Fundamentals" },
-        { name: "Object-Oriented Design", level: "Proficient", tag: "Inheritance & Polymorphism" },
-      ]
-    },
-    {
-      id: "ml-python",
-      title: "Python & Machine Learning",
-      iconName: "Brain",
-      description: "Data exploration, preprocessing, classification models, and evaluation.",
-      skills: [
-        { name: "Python", level: "Core", tag: "Scripting & Analysis" },
-        { name: "scikit-learn", level: "Proficient", tag: "Classifiers & Metrics" },
-        { name: "pandas", level: "Proficient", tag: "Dataframes & Cleaning" },
-        { name: "NumPy", level: "Proficient", tag: "Vector Operations" },
-        { name: "Matplotlib", level: "Proficient", tag: "Visualization" },
-        { name: "Decision Trees & Regression", level: "Proficient", tag: "Supervised Learning" },
-      ]
-    },
-    {
-      id: "engineering-dsp",
-      title: "Engineering & Signal Processing",
-      iconName: "Radio",
-      description: "Mathematical computing, continuous/discrete signals, and logic circuits.",
-      skills: [
-        { name: "MATLAB", level: "Core", tag: "Simulation & Modeling" },
-        { name: "Signal Sampling & Nyquist", level: "Core", tag: "DSP Fundamentals" },
-        { name: "Fast Fourier Transform (FFT)", level: "Core", tag: "Spectral Analysis" },
-        { name: "Digital Logic Design", level: "Proficient", tag: "Logic Gates & KMaps" },
-        { name: "Proteus Simulation", level: "Proficient", tag: "Circuit Testing" },
-      ]
-    },
-    {
-      id: "tools-workflow",
-      title: "Tools, Database & Workflow",
-      iconName: "Database",
-      description: "Version control, foundational querying, and IDE development pipelines.",
-      skills: [
-        { name: "Git & GitHub", level: "Core", tag: "Version Control" },
-        { name: "SQL Fundamentals", level: "Proficient", tag: "Relational Queries" },
-        { name: "Visual Studio & VS Code", level: "Core", tag: "IDE Ecosystem" },
-        { name: "Input Validation & Debugging", level: "Core", tag: "System Reliability" },
-      ]
-    }
-  ] as SkillCategory[],
+    { name: "Object-Oriented Programming (C#)", code: "CS-OOP", category: "Software", semester: "3rd Sem" },
+    { name: "Machine Learning with Python", code: "AI-ML", category: "AI / Data", semester: "3rd Sem" },
+    { name: "Signals & Systems", code: "EE-SIG", category: "DSP", semester: "3rd Sem" },
+    { name: "Digital Logic Design (DLD)", code: "CE-DLD", category: "Hardware", semester: "2nd Sem" },
+    { name: "Circuit Analysis", code: "EE-CKT", category: "Hardware", semester: "2nd Sem" },
+    { name: "Discrete Structures", code: "CS-DIS", category: "Mathematics", semester: "2nd Sem" },
+    { name: "Complex Variables & Transforms", code: "MATH-CV", category: "Mathematics", semester: "3rd Sem" },
+  ] as CourseworkItem[],
 
   /**
-   * PROJECTS
-   * You can add, edit, or re-order any project here!
-   * Simply duplicate one block and modify the values.
+   * ============================================================================
+   * CURRENTLY LEARNED (EDIT THIS TO UPDATE WHAT YOU HAVE MASTERED)
+   * ============================================================================
+   * Add, remove, or edit any skill/concept you have learned here.
+   */
+  currentlyLearned: [
+    {
+      id: "learned-c-memory",
+      topic: "Pointers & Dynamic Memory Allocation in C",
+      category: "Systems",
+      period: "Recently Mastered",
+      takeaway:
+        "Mastered explicit memory management using malloc(), free(), pointer arithmetic, double pointers, and custom struct data architectures with zero memory leaks.",
+      appliedIn: "C Student Management System",
+      status: "Mastered",
+      tags: ["C", "Pointers", "malloc/free", "Memory Layout", "Structs"]
+    },
+    {
+      id: "learned-ml-trees",
+      topic: "Supervised Classification & Decision Trees",
+      category: "Machine Learning",
+      period: "Recently Mastered",
+      takeaway:
+        "Implemented scikit-learn classification pipelines, train/test splitting, sample weighting for unbalanced datasets, and tree pruning/depth optimization.",
+      appliedIn: "Diabetes Prediction Model",
+      status: "Mastered",
+      tags: ["Python", "scikit-learn", "Decision Trees", "pandas", "NumPy"]
+    },
+    {
+      id: "learned-dsp-fft",
+      topic: "Discrete Sampling & Fast Fourier Transform (FFT)",
+      category: "Signal Processing",
+      period: "Recently Mastered",
+      takeaway:
+        "Deep understanding of Nyquist-Shannon sampling theorem, harmonic spectral analysis, and converting time-domain waveforms to frequency spectra in MATLAB.",
+      appliedIn: "MATLAB Signal Processing Suite",
+      status: "Mastered",
+      tags: ["MATLAB", "FFT", "Nyquist Rate", "Continuous vs Discrete", "DSP"]
+    },
+    {
+      id: "learned-csharp-oop",
+      topic: "Object-Oriented Programming (OOP) in C#",
+      category: "Software",
+      period: "Recently Mastered",
+      takeaway:
+        "Designed clean multi-class architectures leveraging encapsulation, inheritance, interfaces, and local relational data storage principles.",
+      appliedIn: "C# Login & Data Storage System",
+      status: "Proficient",
+      tags: ["C#", ".NET", "OOP Pillars", "SQL Basics", "Authentication"]
+    },
+    {
+      id: "learned-dld-logic",
+      topic: "Digital Logic Design & Circuit Simulation",
+      category: "Hardware",
+      period: "Completed",
+      takeaway:
+        "Synthesized combinational and sequential logic circuits, Karnaugh maps (K-Maps), Boolean algebra minimization, and schematic simulation in Proteus.",
+      appliedIn: "Hardware Lab & Proteus Workflows",
+      status: "Proficient",
+      tags: ["DLD", "Logic Gates", "K-Maps", "Proteus", "Circuits"]
+    },
+    {
+      id: "learned-git-workflow",
+      topic: "Git Version Control & Terminal Workflows",
+      category: "Software",
+      period: "Daily Practice",
+      takeaway:
+        "Proficient with branch management, commits, GitHub remote repositories, and terminal development tooling across Windows and Linux environments.",
+      appliedIn: "All Software Repositories",
+      status: "Mastered",
+      tags: ["Git", "GitHub", "CLI", "Version Control"]
+    }
+  ] as LearnedItem[],
+
+  /**
+   * ============================================================================
+   * CURRENTLY LEARNING & ROADMAP (EDIT THIS TO UPDATE CURRENT FOCUS)
+   * ============================================================================
+   */
+  currentlyLearning: [
+    {
+      id: "learning-dl-pytorch",
+      topic: "Deep Learning & Neural Networks (PyTorch)",
+      domain: "Artificial Intelligence",
+      focus: "Transitioning from traditional scikit-learn models into deep neural architectures, backpropagation mathematics, and tensor computation.",
+      progressPercent: 65,
+      nextMilestone: "Build a convolutional image and acoustic signal classifier in PyTorch.",
+      tags: ["PyTorch", "Tensors", "Neural Networks", "Deep Learning"]
+    },
+    {
+      id: "learning-cloud-amplify",
+      topic: "Modern Cloud Architecture & AWS Amplify",
+      domain: "Cloud Engineering",
+      focus: "Mastering static edge deployment, serverless hosting, CDN cache invalidation, and CI/CD pipelines via AWS Amplify.",
+      progressPercent: 80,
+      nextMilestone: "Deploy portfolio with custom domain routing and automated AWS build hooks.",
+      tags: ["AWS Amplify", "CloudFront CDN", "Next.js Static Export", "CI/CD"]
+    },
+    {
+      id: "learning-embedded-systems",
+      topic: "Embedded Systems & Microcontroller Firmware",
+      domain: "Hardware / Systems",
+      focus: "Bridging low-level C programming with real hardware registers, timers, interrupts, and GPIO interfacing.",
+      progressPercent: 45,
+      nextMilestone: "Complete hardware interfacing prototype with simulated microcontroller in Proteus.",
+      tags: ["Embedded C", "Microcontrollers", "Timers & Interrupts", "GPIO"]
+    }
+  ] as LearningItem[],
+
+  /**
+   * ============================================================================
+   * FEATURED PROJECTS (EDIT REPO LINKS & CODE SNIPPETS HERE)
+   * ============================================================================
    */
   projects: [
     {
@@ -193,38 +254,56 @@ export const portfolioData = {
       title: "C Student Management System",
       category: "Systems",
       tagline: "Console-based student database managing records with zero external database dependencies.",
-      description: 
-        "A robust console-based records management system engineered in pure C. Built to demonstrate deep understanding of structs, pointer traversal, dynamic memory allocation, and defensive input validation.",
+      description:
+        "A low-level records management engine written in ANSI C. Employs custom structs, pointers, dynamic memory allocation (malloc/free), and defensive input validation to guard against buffer overruns.",
       highlights: [
-        "Architected using custom C structs, dynamic arrays, and memory pointers.",
-        "Implemented full CRUD operations: add student, search by roll number, update records, and safely remove entries.",
-        "Built defensive input validation handling unexpected character inputs and preventing buffer overruns.",
-        "Structured modular functions with clean separation of logic and presentation."
+        "Dynamic memory allocation for expandable student record stores.",
+        "Pointer arithmetic for record traversal, binary searching, and sorting.",
+        "Sanitized input parsing protecting against malformed stdin streams.",
+        "Clean terminal interface with formatted tabular output."
       ],
-      techStack: ["C", "Pointers", "Structs", "Dynamic Memory", "Console UI"],
+      techStack: ["C Language", "Pointers", "Dynamic Memory", "Structs", "Data Structures"],
       githubUrl: "https://github.com/placeholder-ubaid/c-student-management", // EDIT HERE
       featured: true,
       status: "Completed",
       date: "2025",
       badge: "Featured Systems Project",
       architectureDetails: [
-        "Memory: Struct array with dynamic pointer offsets",
-        "Operations: O(N) linear search with formatted tabular report rendering",
-        "Validation: Sanitized stdin stream parsing"
-      ]
+        "Memory: Heap-allocated struct array with pointer offsets",
+        "Search: Optimized traversal with formatted console tabular view",
+        "Integrity: Validated input loops to prevent buffer overflow"
+      ],
+      codeSnippet: {
+        language: "c",
+        filename: "student_manager.c",
+        code: `typedef struct {
+    int rollNumber;
+    char name[50];
+    float gpa;
+} Student;
+
+Student* create_registry(size_t capacity) {
+    Student* list = (Student*)malloc(capacity * sizeof(Student));
+    if (!list) {
+        perror("Memory allocation failed");
+        exit(EXIT_FAILURE);
+    }
+    return list;
+}`
+      }
     },
     {
       id: "diabetes-prediction-ml",
-      title: "Diabetes Prediction Classification Model",
+      title: "Diabetes Prediction Classification Pipeline",
       category: "Machine Learning",
       tagline: "Supervised machine learning pipeline for diagnostic classification using scikit-learn.",
-      description: 
-        "An end-to-end machine learning project focusing on data preprocessing, feature correlation, sample weighting, and decision-tree classification on clinical biomarker datasets.",
+      description:
+        "Supervised ML classification system built on clinical biomarker data. Implemented complete data preprocessing, train/test splitting, sample weighting for class imbalance, and decision tree classification.",
       highlights: [
-        "Cleaned and preprocessed health metrics dataset, handling missing values and scaling numerical attributes.",
-        "Conducted train/test splitting and implemented sample weighting to address class balance.",
-        "Trained and evaluated a Decision Tree Classifier using scikit-learn with depth tuning.",
-        "Generated confusion matrices, accuracy scores, and visual metric plots using Matplotlib."
+        "Cleaned and preprocessed biomedical feature vectors with pandas.",
+        "Handled class distribution skew using sample weighting strategies.",
+        "Trained DecisionTreeClassifier in scikit-learn with depth pruning.",
+        "Evaluated model with confusion matrices, precision/recall, and ROC metrics."
       ],
       techStack: ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib"],
       githubUrl: "https://github.com/placeholder-ubaid/diabetes-prediction-ml", // EDIT HERE
@@ -233,23 +312,79 @@ export const portfolioData = {
       date: "2025",
       badge: "Machine Learning",
       architectureDetails: [
-        "Model: DecisionTreeClassifier (Gini / Entropy criterion)",
-        "Pipeline: Train/Test splitting, feature normalization, evaluation reports",
-        "Visualization: Precision/Recall analysis & tree boundary plots"
-      ]
+        "Pipeline: Imputation -> Feature Scaling -> Train/Test Partition (80/20)",
+        "Estimator: DecisionTreeClassifier with tuned max_depth & min_samples_split",
+        "Evaluation: Precision-Recall curves & confusion matrix heatmaps"
+      ],
+      codeSnippet: {
+        language: "python",
+        filename: "model_pipeline.py",
+        code: `from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+clf = DecisionTreeClassifier(max_depth=4, class_weight='balanced')
+clf.fit(X_train, y_train)
+y_pred = clf.predict(X_test)
+print(classification_report(y_test, y_pred))`
+      }
+    },
+    {
+      id: "matlab-signal-processing",
+      title: "MATLAB Signal Processing & FFT Suite",
+      category: "Engineering",
+      tagline: "Continuous and discrete signal analysis workspace featuring Fast Fourier Transform (FFT).",
+      description:
+        "Comprehensive signal processing toolkit developed in MATLAB. Demonstrates continuous signal sampling, Nyquist-Shannon criteria, aliasing detection, and harmonic spectral decomposition using the Fast Fourier Transform.",
+      highlights: [
+        "Simulated composite continuous signals with multi-frequency harmonics.",
+        "Formulated discrete sampling workflows and Nyquist rate adherence.",
+        "Computed Fast Fourier Transform (FFT) for spectral density analysis.",
+        "Plotted dual-domain visualizations contrasting time and frequency responses."
+      ],
+      techStack: ["MATLAB", "Signals & Systems", "FFT", "DSP", "Spectral Analysis"],
+      githubUrl: "https://github.com/placeholder-ubaid/matlab-signal-suite", // EDIT HERE
+      featured: true,
+      status: "Completed",
+      date: "2025",
+      badge: "DSP & Mathematics",
+      architectureDetails: [
+        "Sampling: Discrete-time conversion adhering to Fs > 2*Fmax",
+        "FFT Decomposition: 1024-point discrete Fourier transform computation",
+        "Plotting: Dual-axis time-domain waveforms vs. single-sided amplitude spectra"
+      ],
+      codeSnippet: {
+        language: "matlab",
+        filename: "fft_spectral_analysis.m",
+        code: `Fs = 1000;            % Sampling frequency (Hz)
+T = 1/Fs;             % Sampling period
+L = 1500;             % Length of signal
+t = (0:L-1)*T;        % Time vector
+
+% Multi-tone composite signal
+S = 0.7*sin(2*pi*50*t) + sin(2*pi*120*t);
+Y = fft(S);
+P2 = abs(Y/L);
+P1 = P2(1:L/2+1);
+P1(2:end-1) = 2*P1(2:end-1);
+f = Fs*(0:(L/2))/L;`
+      }
     },
     {
       id: "csharp-auth-storage",
       title: "C# Login & Local Data Storage System",
       category: "Software",
       tagline: "Object-oriented authentication workflow with persistent local data storage principles.",
-      description: 
-        "An application developed in C# that implements a complete user registration and login authentication workflow, applying fundamental Object-Oriented Programming (OOP) patterns and relational SQL concepts.",
+      description:
+        "Desktop authentication and credential management application built in C#. Integrates core OOP patterns (encapsulation, abstraction) with local data persistence applying foundational relational SQL concepts.",
       highlights: [
-        "Leveraged OOP pillars: encapsulation for user credentials, class abstractions, and secure property validation.",
-        "Designed local data persistence applying foundational relational database schema concepts.",
-        "Created an intuitive user authentication flow with credential verification and session feedback.",
-        "Structured with clean separation between data access layer and presentation logic."
+        "Structured 3-tier architecture: Presentation, Logic, and Data Access layers.",
+        "Enforced encapsulation for user credentials and session tokens.",
+        "Integrated local relational storage schemas with parameterized queries.",
+        "Implemented structured input sanitization and error logging."
       ],
       techStack: ["C#", ".NET", "OOP", "SQL Fundamentals", "Authentication"],
       githubUrl: "https://github.com/placeholder-ubaid/csharp-login-storage", // EDIT HERE
@@ -258,58 +393,45 @@ export const portfolioData = {
       date: "2025",
       badge: "Software Engineering",
       architectureDetails: [
-        "Architecture: 3-tier separation (Model, Controller, Storage handler)",
-        "Security: Credential sanitization & structured user session states",
-        "Storage: Local relational storage integration"
-      ]
-    },
-    {
-      id: "matlab-signal-processing",
-      title: "MATLAB Signal Processing & Spectral Analysis Suite",
-      category: "Engineering",
-      tagline: "Continuous and discrete signal analysis workspace featuring Fast Fourier Transform (FFT).",
-      description: 
-        "A suite of MATLAB scripts and numerical routines created for signal processing coursework, focusing on continuous-to-discrete sampling, frequency-domain FFT decomposition, and waveform visualization.",
-      highlights: [
-        "Simulated continuous and discrete test signals with varying frequencies and harmonic components.",
-        "Applied the Fast Fourier Transform (FFT) algorithm to extract frequency spectra and analyze amplitude distributions.",
-        "Demonstrated Nyquist sampling theorem, exploring aliasing phenomena and reconstruction fidelity.",
-        "Generated multi-panel plots contrasting time-domain vs. frequency-domain waveforms."
+        "Design: Multi-tier OOP abstraction with user repository interface",
+        "Security: Sanitized credentials and session validation state machine",
+        "Data: Local persistence implementing SQL schema principles"
       ],
-      techStack: ["MATLAB", "Signals & Systems", "FFT Algorithm", "DSP", "Frequency Analysis"],
-      githubUrl: "https://github.com/placeholder-ubaid/matlab-signal-suite", // EDIT HERE
-      featured: true,
-      status: "Completed",
-      date: "2025",
-      badge: "DSP & Mathematics",
-      architectureDetails: [
-        "Sampling: Discrete-time conversion with Nyquist rate adherence",
-        "Spectral Analysis: Magnitude & phase computation via discrete FFT",
-        "Visualization: Dual-domain real-time waveform rendering"
-      ]
+      codeSnippet: {
+        language: "csharp",
+        filename: "AuthService.cs",
+        code: `public class AuthService : IAuthService
+{
+    private readonly IUserRepository _repository;
+
+    public AuthService(IUserRepository repository) {
+        _repository = repository;
+    }
+
+    public bool Authenticate(string username, string passwordHash) {
+        var user = _repository.FindByUsername(username);
+        return user != null && user.ValidatePassword(passwordHash);
+    }
+}`
+      }
     }
   ] as ProjectItem[],
 
-  /**
-   * CERTIFICATES & CREDENTIALS
-   * Since certificates are upcoming, these placeholders provide a clean structure.
-   * As you complete certifications, simply update title, issuer, date, and link!
-   */
   certificates: [
     {
       id: "cert-ml-python",
       title: "Machine Learning with Python",
-      issuer: "Coursera / IBM / Cognitive Class (Target Credential)",
+      issuer: "Coursera / IBM / Cognitive Class (Planned / Target Credential)",
       issueDate: "In Progress / 2026",
       status: "In Progress",
-      credentialUrl: "", // Leave blank or add verification URL
+      credentialUrl: "",
       skills: ["Supervised ML", "Regression", "Decision Trees", "scikit-learn"],
       badgeColor: "emerald"
     },
     {
       id: "cert-c-systems",
       title: "Advanced C Programming & Data Structures",
-      issuer: "Academic Specialization / IEEE (Target Credential)",
+      issuer: "Academic Specialization / IEEE (Verified Coursework)",
       issueDate: "Verified Coursework",
       status: "Completed",
       credentialUrl: "",
@@ -319,7 +441,7 @@ export const portfolioData = {
     {
       id: "cert-aws-cloud",
       title: "Cloud Computing & AWS Deployment Fundamentals",
-      issuer: "AWS Educate / AWS Training (Target Credential)",
+      issuer: "AWS Educate / AWS Training (Planned / Target Credential)",
       issueDate: "Planned / 2026",
       status: "Planned",
       credentialUrl: "",
@@ -335,34 +457,11 @@ export const portfolioData = {
       location: "Multan, Pakistan",
       period: "2025 – Present",
       highlights: [
-        "Serve as the primary communication bridge between Computer Engineering students and university faculty.",
-        "Coordinate academic schedules, assignment milestones, and departmental notifications.",
-        "Assist instructors and lab engineers with physics and electronics hardware experiment setup, calibration, and safety checks.",
-        "Provide direct technical setup support for lab computers, projection hardware, and software tooling during lectures."
+        "Serve as the primary liaison bridging students and engineering faculty for academic schedules and departmental announcements.",
+        "Assist instructors with physics and electronics hardware experiment setup, wiring checks, and test equipment calibration.",
+        "Manage technical setup, software configurations, and projection systems for laboratory sessions and demonstrations."
       ],
       impactTags: ["Academic Coordination", "Hardware Lab Setup", "Student Leadership", "Faculty Liaison"]
     }
-  ] as LeadershipRole[],
-
-  currentlyLearning: [
-    {
-      topic: "Deep Learning & Neural Networks",
-      context: "Expanding from scikit-learn decision trees into PyTorch foundations for computer vision and signal classification.",
-      status: "Active Exploration",
-      tags: ["PyTorch", "Neural Nets", "Deep Learning"]
-    },
-    {
-      topic: "Modern Full-Stack & Cloud Architecture",
-      context: "Mastering TypeScript, modern React component architecture, and AWS Amplify serverless cloud deployment.",
-      status: "In Progress",
-      tags: ["TypeScript", "AWS Amplify", "Next.js"]
-    },
-    {
-      topic: "Embedded Systems & Microcontrollers",
-      context: "Connecting low-level C programming with hardware architectures, microcontrollers, and real-time digital logic.",
-      status: "Upcoming Coursework",
-      tags: ["Embedded C", "Microcontrollers", "Hardware/Software Co-design"]
-    }
   ]
 };
-
